@@ -4,6 +4,7 @@ This project implements a 3D reconstruction pipeline for glasses based on Tencen
 
 ## Features
 
+- **Real Data Support**: Scripts for downloading and processing real glasses images
 - **Custom Data Loading**: Specialized dataset class for glasses images
 - **3D Metrics**: Implementation of Chamfer distance, Earth Mover's Distance (EMD), and 3D IoU
 - **Training and Evaluation Scripts**: Scripts for training and evaluating the model
@@ -19,6 +20,15 @@ Hunyuan3D-Pfa/
 ├── notebooks/             # Directory for Jupyter notebooks
 │   └── glasses_reconstruction_pipeline.ipynb  # Complete workflow notebook
 ├── results/               # Directory for saving reconstruction results
+├── scripts/               # Scripts for dataset creation and testing
+│   ├── create_dataset.py             # Script to create synthetic dataset
+│   ├── create_real_dataset.py        # Script to create real dataset
+│   ├── download_dataset.py           # Script to download/generate images
+│   ├── download_real_dataset.py      # Script to download real images
+│   ├── generate_3d_models.py         # Script to generate 3D models
+│   ├── setup_kaggle.py               # Script to set up Kaggle credentials
+│   ├── simple_test.py                # Simple test script
+│   └── test_model.py                 # Comprehensive test script
 ├── src/                   # Source code
 │   ├── data/              # Data loading and processing
 │   │   ├── __init__.py
@@ -33,8 +43,8 @@ Hunyuan3D-Pfa/
 │   │   ├── chamfer.py     # Chamfer distance implementation
 │   │   ├── emd.py         # Earth Mover's Distance implementation
 │   │   └── iou.py         # IoU implementation
-│   │   └── train.py       # Training script
-│   │   └── evaluate.py    # Evaluation script
+│   ├── train.py           # Training script
+│   ├── evaluate.py        # Evaluation script
 │   └── utils/             # Utility functions
 │       ├── __init__.py
 │       ├── visualization.py  # Visualization utilities
@@ -78,6 +88,38 @@ data/
 ```
 
 If the split files (`train.txt`, `val.txt`, `test.txt`) are not provided, the dataset will be automatically split into training (80%), validation (10%), and test (10%) sets.
+
+### Creating the Dataset
+
+You can create the dataset using one of the following methods:
+
+#### Method 1: Using Real Data (Recommended)
+
+To create a dataset with real glasses images:
+
+```bash
+# If you have Kaggle credentials
+python scripts/create_real_dataset.py --total 5000 --kaggle_username YOUR_USERNAME --kaggle_key YOUR_KEY
+
+# Without Kaggle credentials
+python scripts/create_real_dataset.py --total 5000
+```
+
+This script will:
+1. Set up Kaggle credentials (if provided)
+2. Download real glasses images from public datasets
+3. Generate 3D models for the images
+4. Create train/val/test splits
+
+#### Method 2: Using Synthetic Data
+
+If you don't have access to real data, you can generate a synthetic dataset:
+
+```bash
+python scripts/create_dataset.py --total 5000
+```
+
+This will create a dataset with synthetic glasses images and corresponding 3D models.
 
 ## Usage
 
