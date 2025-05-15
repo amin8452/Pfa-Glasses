@@ -65,7 +65,8 @@ env.bak/
 venv.bak/
 
 # Project specific
-data/
+data/*
+!data/README.md
 checkpoints/
 results/
 
