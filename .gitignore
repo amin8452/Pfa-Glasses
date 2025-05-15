@@ -67,8 +67,10 @@ venv.bak/
 # Project specific
 data/*
 !data/README.md
-checkpoints/
-results/
+checkpoints/*
+!checkpoints/README.md
+results/*
+!results/README.md
 
 # Large files
 *.obj
