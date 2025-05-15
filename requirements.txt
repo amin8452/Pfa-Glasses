@@ -16,3 +16,6 @@ open3d>=0.16.0
 scikit-learn>=1.0.0
 jupyter>=1.0.0
 ipywidgets>=8.0.0
+rtree>=1.0.0
+requests>=2.25.0
+kaggle>=1.5.12
